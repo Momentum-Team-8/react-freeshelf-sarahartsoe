@@ -49,7 +49,7 @@ export const App = () => {
       "author": "Daniel Higgenbotham",
       "url": "https://www.braveclojure.com/clojure-for-the-brave-and-true/",
       "shortDescription": "In Clojure for the Brave and True, you'll learn to wield this awesome language to its fullest!",
-      "coverImageUrl": "http://nostarch.com/sites/default/files/styles/uc_product/public/clojure_cover-front_final.png",
+      "coverImageUrl": "https://www.braveclojure.com/assets/images/home/book-cover.jpg",
       "publisher": "No Starch Press",
       "publicationDate": "2015",
       "detailedDescription": "For weeks, months—nay!—from the very moment you were born, you’ve felt it calling to you. At long last you'll be united with the programming language you've been longing for: Clojure! Clojure’s popularity continues to grow, with companies like Netflix using it to build everything from complex, distributed systems to simple microservices to user interfaces. In Clojure for the Brave and True, you'll learn to wield this awesome language to its fullest!"
@@ -100,11 +100,11 @@ export const App = () => {
 export const Book = (props) => {
   const { title, author, shortDescription, coverImageUrl } = props
   return (
-    <div >
+    <div>
       <h1>{title}</h1>
       <h2>{author}</h2>
       <p>{shortDescription}</p>
-      <p>{coverImageUrl}</p>
+      <img src={coverImageUrl} alt='coverImage' />
     </div>
   )
 }
