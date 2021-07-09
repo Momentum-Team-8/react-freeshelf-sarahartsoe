@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 export const App = () => {
-  const [books, setBooks] = useState([
+  const [books] = useState([
     {
       "title": "You Don't Know JS Yet: Getting Started",
       "author": "Kyle Simpson",
@@ -90,7 +90,7 @@ export const App = () => {
       <div class="notification is-primary">
         Welcome to <strong>Freeshelf</strong>, home of free books.
       </div>
-      <div className="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center is-justify-content-space-between">
+      <div className="is-flex is-flex-direction-row is-flex-wrap-wrap is-align-content-space-between">
         {books.map((read, idx) => {
           return (
           <Book title={read.title} author={read.author} shortDescription={read.shortDescription} coverImageUrl={read.coverImageUrl} key={idx} id={idx} url={read.url} publisher={read.publisher} publicationDate={read.publicationDate} detailedDescription={read.detailedDescription} />
@@ -108,9 +108,9 @@ export const Book = (props) => {
     setExpanded(!expanded)
   }
   return (
-    <div class="tile is-ancestor">
+    <div class="tile is-ancestor is-3 is-flex-grow-2 is-align-content-space-between">
       <div class="tile is-parent">
-        <div class="card" class="container" class="tile is-child box">
+        <div class="card" class="container" class="tile is-child box is-flex-grow-2 is-align-content-space-between">
           <div class="card-image">
             <figure class="image is-4by3">
               <img src={coverImageUrl} alt="coverImage" className='images' />
@@ -125,9 +125,9 @@ export const Book = (props) => {
               <p>{shortDescription}</p>
             </div>
           </div>
-          <footer class="card-footer">
+          <footer class="card-footer is-flex-direction-column">
             <p class="card-header-title">
-              More Information
+            {expanded ? 'Less Information' : 'More Information'}
             </p>
             <button onClick={handleExpanded} class="card-header-icon" aria-label="more options">
               <span class="icon">
@@ -135,9 +135,13 @@ export const Book = (props) => {
               </span>
             </button>
             {expanded && (
-             <> <p>{url}</p>
+              <>
+                <a href={url}>{url}</a>
+                <br></br>
                 <p>{publisher}</p>
+                <br></br>
                 <p>{publicationDate}</p>
+                <br></br>
                 <p>{detailedDescription}</p>
               </>
             )}
