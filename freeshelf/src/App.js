@@ -90,21 +90,27 @@ export const App = () => {
       <div class="notification is-primary">
         Welcome to <strong>Freeshelf</strong>, home of free books.
       </div>
-      {books.map((read, idx) => {
-        return (
-        <Book title={read.title} author={read.author} shortDescription={read.shortDescription} coverImageUrl={read.coverImageUrl} key={idx} id={idx} />
-        )
-      })}
+      <div className="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center is-justify-content-space-between">
+        {books.map((read, idx) => {
+          return (
+          <Book title={read.title} author={read.author} shortDescription={read.shortDescription} coverImageUrl={read.coverImageUrl} key={idx} id={idx} url={read.url} publisher={read.publisher} publicationDate={read.publicationDate} detailedDescription={read.detailedDescription} />
+          )
+        })}
+      </div>
     </main>
   )
 }
 
 export const Book = (props) => {
+  const [expanded, setExpanded] = useState(false)
   const { title, author, shortDescription, coverImageUrl, url, publisher, publicationDate, detailedDescription } = props
+  const handleExpanded = () => {
+    setExpanded(!expanded)
+  }
   return (
     <div class="tile is-ancestor">
       <div class="tile is-parent">
-        <div class="card" class="container" class="tile is-child is-4 box">
+        <div class="card" class="container" class="tile is-child box">
           <div class="card-image">
             <figure class="image is-4by3">
               <img src={coverImageUrl} alt="coverImage" className='images' />
@@ -123,15 +129,18 @@ export const Book = (props) => {
             <p class="card-header-title">
               More Information
             </p>
-            <button class="card-header-icon" aria-label="more options">
+            <button onClick={handleExpanded} class="card-header-icon" aria-label="more options">
               <span class="icon">
-                <i class="fas fa-angle-down" aria-expanded="false"></i>
+                <i class="fas fa-angle-down"></i>
               </span>
             </button>
-            <p>{url}</p>
-            <p>{publisher}</p>
-            <p>{publicationDate}</p>
-            <p>{detailedDescription}</p>
+            {expanded && (
+             <> <p>{url}</p>
+                <p>{publisher}</p>
+                <p>{publicationDate}</p>
+                <p>{detailedDescription}</p>
+              </>
+            )}
           </footer>
         </div>
       </div>
@@ -140,7 +149,3 @@ export const Book = (props) => {
 }
 
 export default App;
-
-// <div>
-//   <img src={coverImageUrl} alt='coverImage' className='images' />
-// </div>
