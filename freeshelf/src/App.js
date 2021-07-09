@@ -125,7 +125,7 @@ export const Book = (props) => {
             </p>
             <button class="card-header-icon" aria-label="more options">
               <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-down" aria-expanded="false"></i>
               </span>
             </button>
             <p>{url}</p>
