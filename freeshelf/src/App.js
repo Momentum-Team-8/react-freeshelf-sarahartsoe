@@ -87,7 +87,9 @@ export const App = () => {
   ])
   return (
     <main>
-      <h1>Freeshelf Books</h1>
+      <div class="notification is-primary">
+        Welcome to <strong>Freeshelf</strong>, home of free books.
+      </div>
       {books.map((read, idx) => {
         return (
         <Book title={read.title} author={read.author} shortDescription={read.shortDescription} coverImageUrl={read.coverImageUrl} key={idx} id={idx} />
@@ -98,15 +100,47 @@ export const App = () => {
 }
 
 export const Book = (props) => {
-  const { title, author, shortDescription, coverImageUrl } = props
+  const { title, author, shortDescription, coverImageUrl, url, publisher, publicationDate, detailedDescription } = props
   return (
-    <div>
-      <h1>{title}</h1>
-      <h2>{author}</h2>
-      <p>{shortDescription}</p>
-      <img src={coverImageUrl} alt='coverImage' className='images' />
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <div class="card" class="container" class="tile is-child is-4 box">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src={coverImageUrl} alt="coverImage" className='images' />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h2 class="card-header-title">
+                {title}
+              </h2>
+              <h4>{author}</h4>
+              <p>{shortDescription}</p>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <p class="card-header-title">
+              More Information
+            </p>
+            <button class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+            <p>{url}</p>
+            <p>{publisher}</p>
+            <p>{publicationDate}</p>
+            <p>{detailedDescription}</p>
+          </footer>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default App;
+
+// <div>
+//   <img src={coverImageUrl} alt='coverImage' className='images' />
+// </div>

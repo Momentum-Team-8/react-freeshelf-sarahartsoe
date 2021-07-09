@@ -1,5 +1,6 @@
 .images{
-  margin-right:0;
-    margin-left: auto;
-    display:block;
+    float: right;
+    width:  100px;
+    height: 100px;
+    object-fit:scale-down;
 }
